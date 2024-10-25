@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-
+const cors = require("cors");
 
 const {incomingRequestLogger} = require("./middlwares/index");
 const indexRouter = require("./routes/index");
@@ -12,6 +12,7 @@ const taskRouter = require("./routes/task");
 
 dotenv.config();
 const app = express();
+app.use(cors());
 app.use(incomingRequestLogger);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}))
